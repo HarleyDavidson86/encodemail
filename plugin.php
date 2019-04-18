@@ -23,7 +23,6 @@ class pluginEncodeMail extends Plugin {
 	public function pageBegin()
 	{
 		global $page;
-		print_r($page);
 
 		$temp = $this->htmlizeEmails($page->getValue('content'));
 		$page->setField('content', $temp);
