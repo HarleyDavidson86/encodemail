@@ -6,32 +6,12 @@ class pluginEncodeMail extends Plugin {
 	{
 	}
 
-	public function postBegin()
-	{
-		global $post;
-		
-		$temp = $this->htmlizeEmails($post->getValue('content'));
-		$post->setField('content', $temp);
-
-		$temp = $this->htmlizeEmails($post->getValue('contentRaw'));
-		$post->setField('contentRaw', $temp);
-
-		$temp = $this->htmlizeEmails($post->getValue('breakContent'));
-		$post->setField('breakContent', $temp);
-	}
-
 	public function pageBegin()
 	{
 		global $page;
 
-		$temp = $this->htmlizeEmails($page->getValue('content'));
+		$temp = $this->htmlizeEmails($page->content());
 		$page->setField('content', $temp);
-
-		$temp = $this->htmlizeEmails($page->getValue('contentRaw'));
-		$page->setField('contentRaw', $temp);
-
-		$temp = $this->htmlizeEmails($page->getValue('breakContent'));
-		$page->setField('breakContent', $temp);
 	}
 
 	//Finds email addresses in content
